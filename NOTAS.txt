@@ -1,0 +1,28 @@
+Para aportar cambios
+
+1) git clone {URL}
+2) git branch rama-{NAME}
+3) git checkout rama-{NAME}
+
+Ahora estamos en nuestra rama
+Subimos cambios a la rama
+4) git add .
+5) git commit -m "subo cambios bla bla"
+6) git push
+Puede que la primera vez tire un error y tengas que hacer estamos
+6-b) git push --set-upstream origin rama-{NAME}
+
+
+Ahora tenemos que movernos a la rama master/main
+7) git checkout main
+
+Juntamos los cambios
+8) git merge rama-{NAME}
+9) git push
+
+Volvemos a nuestra rama
+10) git checkout rama-{NAME}
+
+
+util: si hacemos "git status" antes de cada comando, podemos ver como cambian los estados
+suele darte un consejo del paso que deberías seguir, por ej despues de un "add" te recomienda hacer "commit"
