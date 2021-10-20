@@ -6,7 +6,7 @@ Para aportar cambios
 
 Ahora estamos en nuestra rama
 Subimos cambios a la rama
-4) git add .
+4) git add .            <-- El punto indica que suba todo lo que se modificó.
 5) git commit -m "subo cambios bla bla"
 6) git push
 Puede que la primera vez tire un error y tengas que hacer estamos
