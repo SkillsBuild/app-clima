@@ -12,6 +12,10 @@ Subimos cambios a la rama
 Puede que la primera vez tire un error y tengas que hacer estamos
 6-b) git push --set-upstream origin rama-{NAME}
 
+Si en este punto hacemos
+    git log --oneline
+podemos ver el log de commit realizados, y se puede visualizar que el ultimo commit solo esta en nuestra rama
+
 
 Ahora tenemos que movernos a la rama master/main
 7) git checkout main
