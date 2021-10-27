@@ -1,8 +1,12 @@
 import React, {useEffect, useState} from 'react';
 import { StyleSheet, Text, View, StatusBar, Animated } from 'react-native';
+import { LogBox } from "react-native";
 
 import Sun from "./assets/sun.jpg";
 import Navigation from './app/navigation/Navigation';
+
+
+LogBox.ignoreAllLogs();
 
 export default function App() {
   const [animated, setAnimated] = useState(false)
