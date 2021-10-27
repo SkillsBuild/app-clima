@@ -1,0 +1,16 @@
+ (si dice que hay una nueva version de expo cli)
+yarn global add expo-cli
+
+ - react navigation
+@react-navigation/native@~5.1.5
+
+expo install react-native-gesture-handler@~1.10.2
+expo install react-native-reanimated@~2.2.0
+expo install react-native-screens@~3.4.0
+expo install react-native-safe-area-context@~3.2.0
+expo install @react-native-community/masked-view@~0.1.10
+
+yarn add @react-navigation/stack@~5.2.10
+
+
+
