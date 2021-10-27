@@ -16,3 +16,5 @@ export default function FavoritesStack(){
         </Stack.Navigator>
     )
 }
+
+// esto es un comentario 
