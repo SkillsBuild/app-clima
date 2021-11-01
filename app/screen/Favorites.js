@@ -1,10 +1,12 @@
 import React from "react";
 import { View, Text } from "react-native";
 
-export default function Favorites(){
-    return(
-        <View>
-            <Text>Favorites...</Text>
-        </View>
-    )
+export default function Favorites() {
+  return (
+    <View>
+      <Text>Favorites...</Text>
+    </View>
+  );
 }
+
+//cold metal
