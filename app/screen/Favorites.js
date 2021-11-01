@@ -8,5 +8,3 @@ export default function Favorites() {
     </View>
   );
 }
-
-//cold metal
