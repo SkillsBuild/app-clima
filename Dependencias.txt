@@ -1,0 +1,39 @@
+ expo init
+(si dice que hay una nueva version de expo cli)
+yarn global add expo-cli
+
+ - React Navigation
+@react-navigation/native@~5.1.5
+-- Actualizacion --
+yarn add @react-navigation/native@~5.4.0
+
+
+expo install react-native-gesture-handler@~1.10.2
+expo install react-native-reanimated@~2.2.0
+expo install react-native-screens@~3.4.0
+expo install react-native-safe-area-context@~3.2.0
+expo install @react-native-community/masked-view@~0.1.10
+ -- Actualizacion --
+yarn add @react-navigation/drawer@~5.10.0
+
+
+yarn add @react-navigation/stack@~5.2.10
+ -- Actualizacion --
+yarn add @react-navigation/stack@~5.10.0
+
+
+ - Tab navigation
+yarn add @react-navigation/bottom-tabs@~5.2.6
+ -- Actualizacion --
+yarn add @react-navigation/bottom-tabs@~5.10.0
+
+
+- React Native Elements
+yarn add react-native-elements@~1.2.7
+
+
+
+
+
+
+
