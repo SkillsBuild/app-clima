@@ -26,7 +26,7 @@ export default function Home() {
           title="¡Comencemos!"
           buttonStyle={styles.btnStyle}
           containerStyle={styles.btnContainer}
-          onPress={() => navigation.navigate("search")}
+          onPress={() => navigation.navigate("favorites")}
         />
       </View>
     </View>
@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   btnStyle: {
-    backgroundColor: "#3FBFBF",
+    backgroundColor: "#FB7508",
   },
   btnContainer: {
     height: 30,
