@@ -16,7 +16,7 @@ export default function AddFavoritesForm(props) {
   const [favoriteName, setFavoriteName] = useState("");
   const [favoriteAdress, setFavoriteAdress] = useState("");
   const [favoriteDescription, setFavoriteDescription] = useState("");
-  const [isVisibleMap, setIsVisibleMap] = useState(true);
+  const [isVisibleMap, setIsVisibleMap] = useState(false);
 
   const addFavorites = () => {};
 
