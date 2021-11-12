@@ -30,6 +30,7 @@
     "react-native-screens": "~3.4.0",
     "react-native-web": "~0.13.12",
     "react-native-app-intro-slider": "*"
+    "@expo/vector-icons": "^12.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0"
