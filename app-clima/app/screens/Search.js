@@ -1,11 +1,10 @@
 import React, {useState, useEffect, useRef} from "react";
 import { StyleSheet, View, Text, FlatList, Image } from "react-native";
 import {SearchBar, ListItem, Icon} from 'react-native-elements';
-import {FireSQL, FireSQL} from "firesql"
+import {FireSQL} from "firesql"
 import firebase from "firebase/app"
 
 const fireSQL = new FireSQL(firebase.firestore(), {includeId: "id"})
-
 
 export default function Search(props){
     const {navigation} = props
