@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import { StyleSheet, Text, View, StatusBar, Animated } from 'react-native';
 import { LogBox } from "react-native";
+import { firebase } from "./app/utils/firebase";
 
 import Sun from "./assets/sun.jpg";
 import Navigation from './app/navigation/Navigation';

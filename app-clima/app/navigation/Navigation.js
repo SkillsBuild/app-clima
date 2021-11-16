@@ -4,8 +4,10 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Icon } from "react-native-elements";
 
-import FavoritesStack from "../navigation/FavoritesStack";
+import FavoritesStack from "./FavoritesStack";
 import SearchStack from "./SearchStack";
+import AccountStack from "./AccountStack";
+import CitiesStack from "./CitiesStack";
 
 
 const Tab = createBottomTabNavigator();
@@ -15,7 +17,7 @@ export default function Navigation(){
     return (
         <NavigationContainer>
             <Tab.Navigator
-                initialRouteName= "map"
+                initialRouteName= "account"
                 tabBarOptions= {{
                     inactiveTintColor: "#646464",
                     activeTintColor: "#00a680"
@@ -24,6 +26,11 @@ export default function Navigation(){
                     tabBarIcon: ({ color }) => screenOptions(route, color)
                 }) }
             >
+                <Tab.Screen 
+                    name="cities" 
+                    component={CitiesStack} 
+                    options= {{ title: "Ciudades" }}
+                />
 
                 <Tab.Screen 
                     name="favorites" 
@@ -34,6 +41,11 @@ export default function Navigation(){
                     name="search"
                     component={SearchStack}
                     options= {{ title: "Búsqueda" }}
+                />
+                <Tab.Screen
+                    name="account"
+                    component={AccountStack}
+                    options= {{ title: "Mi cuenta" }}
                 />
 
             </Tab.Navigator>
@@ -49,8 +61,10 @@ function screenOptions(route,color) {
             iconName = "heart-outline";
             break;
         case "search":
-            iconName = "magnify";
+            iconName = "google-maps";
             break;
+        case "account":
+            iconName = "home-outline";
         default:
             break;
     }
