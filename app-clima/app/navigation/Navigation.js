@@ -15,7 +15,7 @@ export default function Navigation(){
     return (
         <NavigationContainer>
             <Tab.Navigator
-                initialRouteName= "map"
+                initialRouteName= "favorites"
                 tabBarOptions= {{
                     inactiveTintColor: "#646464",
                     activeTintColor: "#00a680"
