@@ -10,9 +10,9 @@ export default function Login(){
     const toastRef = useRef();
 
     return(
-        <ScrollView>
+        <ScrollView >
             <Image
-                source={require("../../../assets/img/5-tenedores-letras-icono-logo.png")}
+                source={require("../../../assets/img/logo-weatherApp.png")}
                 resizeMode="contain"
                 style={styles.logo}
             />
@@ -21,7 +21,6 @@ export default function Login(){
                 <CreateAccount />
             </View>
             <Divider style={styles.divider} />
-            <Text>Social Login...</Text>
             <Toast ref={toastRef} position="center" opacity={0.9} />
         </ScrollView>
     )
@@ -52,6 +51,7 @@ const styles = StyleSheet.create({
     viewContainer: {
         marginRight: 40,
         marginLeft: 40,
+        backgroundColor: '#FFFFFF',
     },
     textRegister: {
         marginTop: 15,
@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
         marginRight: 10,
     },
     btnRegister: {
-        color: "#00a680",
+        color: "#1190CB",
         fontWeight: "bold",
     },
     divider: {

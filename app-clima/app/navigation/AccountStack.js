@@ -9,7 +9,10 @@ const Stack = createStackNavigator();
 
 export default function AccountStack(){
     return(
-        <Stack.Navigator>
+        <Stack.Navigator screenOptions={{
+            headerStyle: { elevation: 0 },
+            cardStyle: { backgroundColor: '#fff' }
+        }}>
             <Stack.Screen
                 name="account"
                 component={Account}

@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "app-clima",
-    "slug": "app-clima",
+    "name": "app-clima-main",
+    "slug": "app-clima-main",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -31,8 +31,8 @@
         }
       },
       "permissions": [
-        "CAMERA_ROLL", 
-        "READ_EXTERNAL_STORAGE", 
+        "CAMERA_ROLL",
+        "READ_EXTERNAL_STORAGE",
         "WRITE_EXTERNAL_STORAGE",
         "LOCATION",
         "ACCESS_COARSE_LOCATION",
