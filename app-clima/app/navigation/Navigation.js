@@ -8,6 +8,7 @@ import FavoritesStack from "./FavoritesStack";
 import SearchStack from "./SearchStack";
 import AccountStack from "./AccountStack";
 import CitiesStack from "./CitiesStack";
+import About from "./About";
 
 
 const Tab = createBottomTabNavigator();
@@ -47,6 +48,11 @@ export default function Navigation(){
                     component={AccountStack}
                     options= {{ title: "Mi cuenta" }}
                 />
+                <Tab.Screen
+                    name="about"
+                    component={About}
+                    options= {{ title: "¿Quiénes Somos?" }}
+                />
 
             </Tab.Navigator>
         </NavigationContainer>
@@ -61,10 +67,17 @@ function screenOptions(route,color) {
             iconName = "heart-outline";
             break;
         case "search":
-            iconName = "google-maps";
+            iconName = "magnify";
             break;
         case "account":
             iconName = "home-outline";
+            break;
+        case "cities":
+            iconName = "earth";
+            break;
+        case "about":
+            iconName = "account-group";
+            break;
         default:
             break;
     }
