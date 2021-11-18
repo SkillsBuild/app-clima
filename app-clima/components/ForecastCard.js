@@ -1,35 +1,35 @@
-import React, {Component} from "react";
-import { StyleSheet, Text, View, Dimensions } from "react-native";
-import { Text, Card, Divider } from "react-native-elements";
-
+import React from "react";
+import { View, Text, StyleSheet, Dimensions, ImageBackground} from 'react-native';
 
 const ForecastCard = () => {
     return (
-        <View>
-            <Text>Forecast card</Text>
-        </View>
+        <View style= {styles.cardContainer} >
+            <ImageBackground
+            style={{height: "100%", width: "100%", opacity: 0.8, flex: 1}}
+            imageStyle={{ borderRadius: 8}}
+            source={require('../assets/img/sunshine.jpg')} >
+            <Text> Acá iria el clima </Text> 
+            </ImageBackground>
+        </View> 
     );
 };
 
-const deviceWidth = Math.round(Dimensions.get('window').width);
-const styles = StyleSheet.create({
-    cardConteiner: {
-        width: deviceWidth -25, 
-        backgroundColor: "#4485f4",
-        height: 200,
-        borderRadius: 20,
 
-        shadowColor: "#000",
-        shadowOffset: {
-            width: 5,
-            height: 5,
-        },
+const deviceWidth = Dimensions.get('window').width;
+const radius = 20;
+const styles = StyleSheet.create({
+    cardContainer: {
+        width: deviceWidth -25,
+        backgroundColor: '#c0e5ed',
+        height: 200,
+        borderRadius: radius,
+        shadowColor: '#000',
         shadowOpacity: 0.75,
         shadowRadius: 5,
-        elevation: 9,
-
+        elevation: 20,
+        
     },
-});
 
+});
 
 export default ForecastCard;
