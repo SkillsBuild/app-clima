@@ -11,7 +11,8 @@ import "firebase/firestore"
 import Loading from '../../components/Loading';
 import { ScrollView } from 'react-native-gesture-handler';
 import Map from '../../components/Map';
-import Favorites from './Cities';
+import Clima from "../../components/clima/Clima"
+
 
 const db = firebase.firestore(firebaseApp)
 
@@ -23,7 +24,7 @@ export default function City(props) {
     const [userLogged, setUserLogged] = useState(false)
     const toastRef = useRef()
 
-    navigation.setOptions({ title: name})
+    navigation.setOptions({ title: name })
 
     firebase.auth().onAuthStateChanged((user) => {
         user ? setUserLogged(true) : setUserLogged(false)
@@ -82,6 +83,7 @@ export default function City(props) {
             .then((response) => {
                 response.forEach((doc) => {
                     const idFavorite = doc.id
+
                     db.collection("favorites")
                         .doc(idFavorite)
                         .delete()
@@ -95,17 +97,67 @@ export default function City(props) {
                 })
             })
     }
+    
+    
+    const removeCity = () => {
+        db.collection("cities")
+            .doc(id)
+            .get()
+            .then((response) => {
+                const idCity = response.id
+
+                db.collection("cities")
+                    .doc(idCity)
+                    .delete()
+                    .then(() => {
+                        db.collection("favorites")
+                            .where("idCity", "==", idCity)
+                            .get()
+                            .then((response) => {
+                                response.forEach((doc) => {
+                                    const idFavorite = doc.id
+
+                                    db.collection("favorites")
+                                        .doc(idFavorite)
+                                        .delete()
+                                        .then(() => {
+                                            setIsFavorite(false)
+                                        })
+                                        .catch(() => {
+                                            toastRef.current.show("Error al eliminar la ciudad de la lista de favoritos")
+                                        })
+                                })
+                            })
+
+                        toastRef.current.show("Se ha eliminado la ciudad de la lista de ciudades")
+                        navigation.navigate("cities")
+                    })
+                    .catch(() => {
+                        toastRef.current.show("Error al eliminar la ciudad de la lista de ciudades")
+                    })
+            })
+    }
 
     if(!city) return <Loading isVisible={true} text="Cargando..." />
 
     return (
         <ScrollView vertical style={styles.viewBody}>
+            <View style={styles.viewDelete}>
+                <Icon
+                    type="material-community"
+                    name= {"trash-can-outline"}
+                    onPress={removeCity}
+                    color= {"#f00"}
+                    size={30}
+                    underlayColor="transparent"
+                />
+            </View>
             <View style={styles.viewFavorite}>
                 <Icon
                     type="material-community"
                     name= {isFavorite ? "heart" : "heart-outline"}
                     onPress={isFavorite ? removeFavorite : addFavorite}
-                    color= {isFavorite ? "#f00" : "#000" }
+                    color= {"#00b347"}
                     size={30}
                     underlayColor="transparent"
                 />
@@ -113,6 +165,9 @@ export default function City(props) {
             <TitleCity
                 name={city.name}
             />
+
+            <Clima lat={city.location.latitude} lon={city.location.longitude}  />
+
             <CityInfo
                 location={city.location}
                 name={city.name}
@@ -133,7 +188,6 @@ function TitleCity(props) {
             <View style={{flexDirection: "row"}}>
                 <Text style={styles.nameCity}> {name} </Text>
             </View>
-            {/* description */}
         </View>
     )
 }
@@ -143,19 +197,23 @@ function CityInfo(props){
     const listInfo = [
         {
             text: address,
-            iconName: "map-marker",
+            iconName: "map-marker-radius",
             iconType: "material-community",
             action: null,
         },
+        {
+            text: name,
+            iconName: "city-variant-outline",
+            iconType: "material-community",
+            action: null,
+        }
     ]
 
     return (
         <View style={styles.viewCityInfo}>
-            <Text style={styles.cityInfoTitle}>
+            {/* <Text style={styles.cityInfoTitle}>
                 Info sobre city
-            </Text>
-            <Map location={location} name={name} height={100} />
-            
+            </Text> */}
             {map(listInfo, (item, index) => (
                 <ListItem
                     key={index}
@@ -168,6 +226,9 @@ function CityInfo(props){
                     containerStyle={styles.containerListItem}
                 />
             ))}
+
+            <Map location={location} name={name} height={150} />
+            
         </View>
     )
 }
@@ -178,15 +239,16 @@ const styles = StyleSheet.create({
         backgroundColor: "#fff"
     },
     viewCityTitle: {
-        padding: 15
+        padding: 15,
+        alignItems: "center"
     },
     nameCity: {
-        fontSize: 20,
+        fontSize: 30,
         fontWeight: "bold"
     },
     viewCityInfo: {
         margin: 15,
-        marginTop: 25
+        marginTop: 5
     },
     cityInfoTitle: {
         fontSize: 20,
@@ -194,8 +256,10 @@ const styles = StyleSheet.create({
         marginBottom: 10
     },
     containerListItem: {
+        borderTopColor: "#d8d8d8",
+        borderTopWidth: 1,
         borderBottomColor: "#d8d8d8",
-        borderBottomWidth: 1
+        borderBottomWidth: 1,
     },
     viewFavorite: {
         position: "absolute",
@@ -205,6 +269,23 @@ const styles = StyleSheet.create({
         backgroundColor: "#fff",
         borderBottomLeftRadius: 100,
         padding: 5,
+        paddingRight: 15,
+    },
+    viewDelete: {
+        position: "absolute",
+        top: 0,
+        left: 0,
+        zIndex: 2,
+        backgroundColor: "#fff",
+        borderBottomLeftRadius: 100,
+        padding: 5,
         paddingLeft: 15,
+    },
+    btnGoBack: {
+        backgroundColor: "#1190CB",
+        marginRight: 100,
+        marginLeft: 100,
+        marginTop: 20,
+        fontWeight: "bold",
     }
 })

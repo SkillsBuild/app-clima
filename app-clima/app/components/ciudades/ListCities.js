@@ -44,7 +44,11 @@ function City(props){
     return (
         <TouchableOpacity onPress= {goCity}>
             <View style={styles.viewCity}>
-                {/* image */}
+                <Image
+                    source={require("../../../assets/img/logo-weatherApp.png")}
+                    resizeMode="contain"
+                    style={styles.logo}
+                />
                 <View>
                     <Text style={styles.cityName}>{name}</Text>
                     <Text style={styles.cityAddress}>{address}</Text>
@@ -75,6 +79,11 @@ function FooterList(props) {
 }
 
 const styles = StyleSheet.create({
+    logo: {
+        width: 60,
+        height: 60,
+        marginRight: 10,
+    },
     loaderCities: {
         marginTop: 10,
         marginBottom: 10,
@@ -85,7 +94,9 @@ const styles = StyleSheet.create({
         margin: 10,
     },
     cityName: {
-        fontWeight: "bold"
+        fontWeight: "bold",
+        fontSize: 20
+        
     },
     cityAddress: {
         paddingTop: 2,

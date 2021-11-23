@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import { StyleSheet, View, ScrollView, Alert, Dimensions } from "react-native"
+import { StyleSheet, View, ScrollView, Alert, Dimensions, TextInput } from "react-native"
 import { Icon, Avatar, Input, Image, Button } from "react-native-elements";
 import * as Location from 'expo-location';
 import Toast from "react-native-easy-toast";
@@ -18,6 +18,7 @@ export default function AddCitiesForm(props){
     const [cityAddress, setCityAddress] = useState("")
     const [isVisibleMap, setIsVisibleMap] = useState(false);
     const [locationCity, setLocationCity] = useState(null)
+    const [cityRegion, setCityRegion] = useState("")
     
 
     const addCity = () => {
@@ -31,6 +32,7 @@ export default function AddCitiesForm(props){
                 .add({
                     name: cityName,
                     address: cityAddress,
+                    //region: cityRegion,
                     location: locationCity,
                     createAt: new Date(),
                     createBy: firebase.auth().currentUser.uid,
@@ -54,6 +56,8 @@ export default function AddCitiesForm(props){
                 setCityAddress={setCityAddress}
                 setIsVisibleMap={setIsVisibleMap}
                 locationCity={locationCity}
+                cityAddress={cityAddress}
+                cityName={cityName}
             />
             <Button
                 title="Crear Ciudad"
@@ -65,6 +69,9 @@ export default function AddCitiesForm(props){
                 setIsVisibleMap={setIsVisibleMap}
                 setLocationCity={setLocationCity}
                 toastRef={toastRef}
+                setCityAddress={setCityAddress}
+                setCityName={setCityName}
+                setCityRegion={setCityRegion}
             />
             <Toast ref={toastRef} position="center" opacity={0.9} />
         </ScrollView>
@@ -73,19 +80,27 @@ export default function AddCitiesForm(props){
 }
 
 function FormAdd(props){
-    const {setCityName, setCityAddress, setIsVisibleMap, locationCity} = props
+    const {setCityName, setCityAddress, setIsVisibleMap, locationCity, cityName, cityAddress} = props
+
 
     return (
         <View style={styles.viewForm}>
+            <Image
+                source={require("../../../assets/img/logo-weatherApp.png")}
+                resizeMode="contain"
+                style={styles.logo}
+            />
             <Input
                 placeholder="Nombre de la ciudad"
                 containerStyle={styles.input}
                 onChange={ event => setCityName(event.nativeEvent.text)}
+                value={cityName}
             />
             <Input
-                placeholder="Direccion"
+                placeholder="Domicilio"
                 containerStyle={styles.input}
                 onChange= {event => setCityAddress(event.nativeEvent.text)}
+                value={cityAddress}
                 rightIcon={{
                     type: "material-community",
                     name: "google-maps",
@@ -99,7 +114,14 @@ function FormAdd(props){
 }
 
 function Map(props){
-    const {isVisibleMap, setIsVisibleMap, toastRef, setLocationCity} = props
+    const {
+        isVisibleMap, 
+        setIsVisibleMap, 
+        toastRef,
+        setLocationCity,
+        setCityAddress,
+        setCityName,
+        setCityRegion} = props
     const [location, setLocation] = useState(null)
     
     useEffect(() => {
@@ -111,6 +133,7 @@ function Map(props){
             if(statusPermission !== "granted") {
                 toastRef.current.show("Tienes que aceptar los permisos de localización.", 3000)
             } else {
+                
                 const loc = await Location.getCurrentPositionAsync({})
 
                 setLocation({
@@ -119,11 +142,26 @@ function Map(props){
                     latitudeDelta: 0.001,
                     longitudeDelta: 0.001,
                 })
+                
+                
             }
         })()
     }, [])
+    
+    const confirmLocation = async () => {
+        const locationReverseGeocode = await Location.reverseGeocodeAsync(location)
+        const locationReverse = locationReverseGeocode[0]
+        console.log(locationReverse)
 
-    const confirmLocation = () => {
+
+        if (locationReverse.city){
+            setCityName(locationReverse.city)
+        }
+        
+        setCityAddress(locationReverse.street)
+
+        setCityRegion(locationReverse.region)
+
         setLocationCity(location)
         toastRef.current.show("Localización guardada con éxito")
         setIsVisibleMap(false)
@@ -169,6 +207,11 @@ function Map(props){
 }
 
 const styles = StyleSheet.create({
+    logo: {
+        width: "100%",
+        height: 150,
+        marginTop: 20,
+    },
     scrollView: {
         height: "100%"
     },
@@ -180,8 +223,9 @@ const styles = StyleSheet.create({
         marginBottom: 10
     },
     btnAddCity: {
-        backgroundColor: "#00a680",
-        margin: 20
+        backgroundColor: "#1190CB",
+        margin: 20,
+        fontWeight: "bold",
     },
     viewMap: {
         height: "100%"

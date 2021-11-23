@@ -18,7 +18,7 @@ export default function Navigation(){
     return (
         <NavigationContainer>
             <Tab.Navigator
-                initialRouteName= "account"
+                initialRouteName= "cities"
                 tabBarOptions= {{
                     inactiveTintColor: "#646464",
                     activeTintColor: "#00a680"
@@ -37,6 +37,7 @@ export default function Navigation(){
                     name="favorites" 
                     component={FavoritesStack} 
                     options= {{ title: "Favoritos" }}
+
                 />
                 <Tab.Screen
                     name="search"

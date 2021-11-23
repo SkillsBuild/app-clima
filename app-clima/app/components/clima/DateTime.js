@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View, Text, Image } from "react-native";
 
 const days = [
   "Sunday",
@@ -27,19 +27,19 @@ const months = [
 
 const WeatherItem = ({ title, value, unit }) => {
   return (
-    <View style={styles.whethercontainer}>
-      <Text style={styles.whethercontainerTitle}>{title}</Text>
-      <Text style={styles.whethercontainerValue}>
-        {value}
-        {unit}
-      </Text>
+    <View>
+        <Text style={styles.weatherTitle}> {title} </Text>
+        <Text style={styles.weatherValue}> {value} {unit} </Text>
     </View>
   );
 };
 
-export default function DateTime({ temperatura, humedad, name,description }) {
+export default function DateTime({ temperatura, humedad, idIcon }) {
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
+
+  const icon = `http://openweathermap.org/img/wn/${idIcon}@2x.png`;
+  
 
   useEffect(() => {
     setInterval(() => {
@@ -50,7 +50,7 @@ export default function DateTime({ temperatura, humedad, name,description }) {
       setTime(
         (hour < 10 ? "0" + hour : hour) +
           ":" +
-          (minutes < 10 ? "0" + minutes : minutes)
+        (minutes < 10 ? "0" + minutes : minutes)
       );
 
       const date = time.getDate();
@@ -62,78 +62,98 @@ export default function DateTime({ temperatura, humedad, name,description }) {
   }, []);
 
   return (
-    <View style={styles.contenedor}>
-      <View>
-        <View>
-          <Text style={styles.hora}>{time}</Text>
-        </View>
-        <View>
-          <Text style={styles.date}>{date}</Text>
-        </View>
-        <View style={styles.whethercontainer}>
-          <Text>
+    <View style={styles.containerDataTime}>
+
+        <View style={styles.weatherContainer}>
+          <View style={styles.containerIcon}>
+            <Image
+                source={{uri: icon}}
+                resizeMode="contain"
+                style={styles.imageIcon}
+            />
+          </View>
+
+          <View style={styles.containerWeatherItem}>
             <WeatherItem
-              title="Temperatua: "
+              title="Temperatua "
               value={temperatura ? temperatura : ""}
               unit="°C"
             />
-            <WeatherItem title="Humedad: " value={humedad} unit="%" />
-            <WeatherItem title="Sunrise: " value="6:50 " unit="am" />
-            <WeatherItem title="Sunset: " value="19:50 " unit="pm" />
-          </Text>
+            <WeatherItem 
+              title="Humedad "
+              value={humedad}
+              unit="%"
+            />
+          </View>
         </View>
+
+      
+        
+      <View style={styles.containerHora}>
+          <Text style={styles.hora}>{time}</Text>
+          <Text style={styles.date}>{date}</Text>
       </View>
-      <View>
-        <Text style={styles.ciudad}>{name}</Text>
-        <Text style={styles.description}>{description}</Text>
-      </View>
+
+  
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  contenedor: {
-    marginTop: 20,
-    marginLeft: 20,
-    marginRight: 20,
-    flex: 1.5,
+  containerDataTime: {
+    marginTop: 5,
+    flex: 1,
+    flexDirection: "column",
+    justifyContent: "center",
+    alignContent:"center"
+  },
+  containerHora:{
     flexDirection: "row",
     justifyContent: "space-between",
-    alignContent:"center"
-    
   },
   hora: {
-    fontSize: 45,
-    color: "white",
+    fontSize: 15,
+    color: "black",
+    marginLeft: 5,
   },
-  whethercontainer: {
-    backgroundColor: "#18181850",
+  date: {
+    fontSize: 15,
+    color: "black",
+    marginRight: 5,
+  },
+
+  weatherContainer: {
+    backgroundColor: "#82d0f5",
     borderRadius: 10,
-    padding: 20,
     flexDirection: "row",
     alignContent: "center",
   },
-  whethercontainerTitle: {
-    fontWeight: "bold",
-    justifyContent:"space-around",
+
+
+  containerIcon:{
+    alignItems: "center",
+    justifyContent: "center"
   },
-  whethercontainerValue: {
-    fontSize: 15,
-    color: "white",
-    fontWeight: "bold",
+  imageIcon: {
+    width: 100,
+    height: 100,
   },
-  date: {
-    fontSize: 25,
-    color: "red",
+
+  containerWeatherItem:{
+    flexDirection: "column",
+    justifyContent: "center",
+    paddingLeft: 30,
+    paddingRight: 30,
   },
-  ciudad: {
-    fontSize: 25,
-    fontWeight: "bold",
-    marginRight: 20,
-  },
-  description: {
+  weatherTitle: {
     fontSize: 18,
     fontWeight: "bold",
-    marginRight: 20,
+    textAlign: "center"
+  },
+  weatherValue: {
+    fontSize: 27,
+    color: "white",
+    fontWeight: "bold",
+    textAlign: "center"
   },
 });

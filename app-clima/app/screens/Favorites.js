@@ -20,6 +20,18 @@ export default function Favorites(props){
     const [isLoading, setIsLoading] = useState(false)
     const [reloadData, setReloadData] = useState(false)
 
+    // navigation.setOptions({ headerLeft: () => {(
+    //     <Icon 
+    //         type="material-community"
+    //         name= "chevron-left"
+    //         onPress={() => navigation.goBack()}  
+    //         color= {"#f00"}
+    //         size={30}
+    //         underlayColor="transparent"
+    //     />
+    // )} })
+
+
     firebase.auth().onAuthStateChanged((user) => {
         user ? setUserLogged(true) : setUserLogged(false)
     })
@@ -189,14 +201,22 @@ function City(props){
 
     return(
         <View style={styles.city}>
-            <TouchableOpacity onPress={() => navigation.navigate("cities", {screen: "city", params: {id: id}})}>
-                {/* image */}
+            <TouchableOpacity onPress={() => navigation.navigate("cities", {screen: "city", params: {id: id, name: name}})}>
+                <View style={styles.viewLogo}>
+                    <Image
+                        resizeMode="cover"
+                        source={require("../../assets/img/clima-playa.jpg")}
+                        style={styles.logo}
+                        PlaceholderContent={<ActivityIndicator color="#fff"/>}
+                        
+                    />
+                </View>
                 <View style={styles.info}>
                     <Text style={styles.name}>{name}</Text>
                     <Icon
                         type="material-community"
                         name="heart"
-                        color="#f00"
+                        color="#ff0025"
                         containerStyle={styles.favorite}
                         onPress={confirmRemoveFavorite}
                         underlayColor="transparent"
@@ -208,6 +228,16 @@ function City(props){
 }
 
 const styles = StyleSheet.create({
+    viewLogo:{
+        
+        
+    },
+    logo:{
+        width: "100%",
+        height: 180,
+    },
+
+
     viewNoLogged: {
         flex:1, 
         alignItems:"center", 
@@ -245,7 +275,7 @@ const styles = StyleSheet.create({
         paddingRight: 20,
         paddingTop: 10,
         paddingBottom: 10,
-        marginTop: 30,
+        marginTop: -5,
         backgroundColor: "#fff"
     },
     name: {
