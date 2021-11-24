@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { StyleSheet, View, StatusBar, Animated } from "react-native";
+import { firebaseApp } from "./app/utils/firebase";
 
 import Cloud from "./assets/imagenes/cloud.png";
 import Sun from "./assets/imagenes/sun2.png";
@@ -53,7 +54,7 @@ export default function App() {
               { opacity: show, transform: [{ scale: font }] },
             ]}
           >
-            WeatherApp
+            ClimaAp
           </Animated.Text>
         </View>
       </>
