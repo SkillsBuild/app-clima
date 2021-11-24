@@ -54,7 +54,7 @@ export default function App() {
               { opacity: show, transform: [{ scale: font }] },
             ]}
           >
-            ClimaAp
+            ClimApp
           </Animated.Text>
         </View>
       </>
