@@ -209,6 +209,7 @@ function CityInfo(props){
         }
     ]
 
+
     return (
         <View style={styles.viewCityInfo}>
             {/* <Text style={styles.cityInfoTitle}>

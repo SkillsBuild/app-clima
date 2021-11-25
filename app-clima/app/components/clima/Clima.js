@@ -8,10 +8,10 @@ const APIKEY = "d88836fc5ebe5bd3c1dc5126da78cbc3";
 export default function Clima(props) {
   const {lat, lon} = props
   
-  const [data, setData] = useState(null);
   const [temperatura, setTemperatura] = useState("")
   const [humedad, setHumedad] = useState("")
   const [idIcon, setIdIcon] = useState("")
+
 
   useEffect(() => {
     fetchDataFromAPI(lat, lon)
@@ -19,23 +19,20 @@ export default function Clima(props) {
 
 
   const fetchDataFromAPI = (lat, lon) => {
-     const uri = `https://api.openweathermap.org/data/2.5/weather?` +
-                  `lat=${lat}&` +
-                  `lon=${lon}&` +
-                  `lang=es&` +
-                  `units=metric&` +
-                  `APPID=${APIKEY}`
+     const uri = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&lang=es&units=metric&APPID=${APIKEY}`
 
     fetch(uri)
       .then( (res) => res.json())
       .then( (json) => {
-        setData(json);
+        const {temp, humidity} = json.main
+        const {icon} = json.weather[0]
 
-        setTemperatura(data.main.temp);
-        setHumedad(data.main.humidity);
-        setIdIcon(data.weather[0].icon);
-      });
-  };
+        setTemperatura(temp);
+        setHumedad(humidity);
+        setIdIcon(icon);
+      })
+      .catch((error) => console.error(error))
+  }
 
 
   return (
@@ -44,6 +41,7 @@ export default function Clima(props) {
     </View>
   );
 }
+
 
 const styles = StyleSheet.create({
   container: {

@@ -9,7 +9,7 @@ export default function Map(props) {
         openMap({
             latitude: location.latitude,
             longitude: location.longitude,
-            zoom: 14,
+            zoom: 16,
             query: name
         })
     }

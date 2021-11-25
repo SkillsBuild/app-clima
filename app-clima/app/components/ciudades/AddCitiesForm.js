@@ -225,7 +225,7 @@ const styles = StyleSheet.create({
     btnAddCity: {
         backgroundColor: "#1190CB",
         margin: 20,
-        fontWeight: "bold",
+        // fontWeight: "bold",
     },
     viewMap: {
         height: "100%"
