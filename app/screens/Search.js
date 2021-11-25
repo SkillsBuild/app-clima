@@ -1,17 +1,17 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { StyleSheet, View, Text, FlatList, Image } from 'react-native';
 import { SearchBar, ListItem, Icon } from 'react-native-elements';
-//import {FireSQL} from "firesql"
-//import firebase from "firebase/app"
+import {FireSQL} from "firesql"
+import firebase from "firebase/app"
 
-//const fireSQL = new FireSQL(firebase.firestore(), {includeId: "id"})
+const fireSQL = new FireSQL(firebase.firestore(), {includeId: "id"})
 
 export default function Search(props) {
   const { navigation } = props;
   const [search, setSearch] = useState('');
   const [cities, setCities] = useState([]);
 
-  /*useEffect(() => {
+  useEffect(() => {
         if(search) {
             fireSQL.query(`SELECT * FROM cities WHERE name LIKE '${search}%'`)
             .then((response) => {
@@ -19,7 +19,7 @@ export default function Search(props) {
             })
         }
         
-    }, [search])*/
+    }, [search])
 
   return (
     <View>
