@@ -108,7 +108,6 @@ const styles = StyleSheet.create({
     btnContainer: {
         position: "absolute",
         top: 430,
-        
         right: 10,
         shadowColor: "black",
         shadowOffset: {width: 2, height: 2},
