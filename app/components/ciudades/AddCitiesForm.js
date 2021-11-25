@@ -14,6 +14,11 @@ import * as Location from 'expo-location';
 import Toast from 'react-native-easy-toast';
 import MapView from "react-native-maps";
 import Modal from "../Modal";
+import { firebaseApp } from '../../utils/firebase';
+import firebase from 'firebase/app';
+import 'firebase/firestore';
+
+const db = firebase.firestore(firebaseApp);
 
 export default function AddCitiesForm(props) {
   const { toastRef, setIsLoading, navigation } = props;
@@ -31,7 +36,26 @@ export default function AddCitiesForm(props) {
     }else if(!locationCity){
       toastRef.current.show("Tienes que ubicar tu lugar favorito en el mapa");
     } else{
-        console.log("OK");
+        
+      setIsLoading(true);
+      db.collection('cities')
+        .add({
+          name: cityName,
+          address: cityAddress,
+          //region: cityRegion,
+          location: locationCity,
+          createAt: new Date(),
+          createBy: firebase.auth().currentUser.uid,
+        })
+        .then(() => {
+          setIsLoading(false);
+          navigation.navigate('cities');
+        })
+        .catch(() => {
+          setIsLoading(false);
+          toastRef.current.show('Error al guardar la ciudad');
+        });
+      
     }
 
   };
