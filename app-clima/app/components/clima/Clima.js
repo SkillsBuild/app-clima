@@ -12,6 +12,8 @@ export default function Clima(props) {
   const [humedad, setHumedad] = useState("")
   const [idIcon, setIdIcon] = useState("")
 
+  /* Este componente realiza la consulta a la API weather
+  dando como resultado el clima en una localización en particular*/
 
   useEffect(() => {
     fetchDataFromAPI(lat, lon)
@@ -36,6 +38,7 @@ export default function Clima(props) {
 
 
   return (
+    // los datos obtenidos se envian al componente DateTime
     <View style={styles.container}>
         <DateTime temperatura={temperatura} humedad={humedad} idIcon={idIcon} />
     </View>

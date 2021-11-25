@@ -6,6 +6,9 @@ import Favorites from "../screens/Favorites"
 const Stack = createStackNavigator();
 
 export default function FavoritesStack(){
+    /*Este componente posee la estructura utilizada en otros componentes relacionados con la navegacion
+    Si en un futuro se desean adicionar screen al componente Favoritos, entonces se deberán colocar en 
+    esta pila de screen*/
     return(
         <Stack.Navigator>
             <Stack.Screen

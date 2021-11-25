@@ -10,6 +10,8 @@ export default function AddCities(props){
     const [isLoading, setIsLoading] = useState(false)
     const toastRef = useRef()
 
+    //Este componente muestra el componente AddCitiesForm para agregar una ciudad nueva
+
     return(
         <View>
             <AddCitiesForm

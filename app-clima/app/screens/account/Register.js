@@ -8,6 +8,8 @@ import RegisterForm from "../../components/account/RegisterForm";
 export default function Register(){
     const toastRef = useRef();
 
+    //Este componente muestra el formulario de Registro
+    
     return(
         <KeyboardAwareScrollView>
             <Image

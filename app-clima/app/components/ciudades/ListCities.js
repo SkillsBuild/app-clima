@@ -7,7 +7,8 @@ import { useNavigation } from "@react-navigation/native"
 export default function ListCities(props) {
     const {cities, handleLoadMore, isLoading} = props
     const navigation = useNavigation();
-
+    //Se muestra el listado de ciudades recibidas por parametro
+    //Cada una invoca a la funcion City con sus datos particulares
 
     return (
         <View>
@@ -34,6 +35,9 @@ function City(props){
     const {city, navigation} = props
     const {id, name, address} = city.item;
 
+    /*Esta funcion recibe una ciudad por parametro, permite mostrarla por pantalla y al clickear en ella
+    dirige al usuario al componente de la ciudad, para mostrar sus datos, ubicacion y clima*/
+
     const goCity = () => {
         navigation.navigate("city", {
             id: id,
@@ -52,7 +56,7 @@ function City(props){
                 <View>
                     <Text style={styles.cityName}>{name}</Text>
                     <Text style={styles.cityAddress}>{address}</Text>
-                    {/* description */}
+                  
                 </View>
             </View>
             
@@ -61,6 +65,7 @@ function City(props){
 }
 
 function FooterList(props) {
+    //Esta funcion permite mostrar mas ciudades cuando el usuario se desplaza hacia abajo, hasta que no queden mas
     const {isLoading} = props
 
     if(isLoading) {

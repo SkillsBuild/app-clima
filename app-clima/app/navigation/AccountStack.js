@@ -8,6 +8,8 @@ import Register from "../screens/account/Register";
 const Stack = createStackNavigator();
 
 export default function AccountStack(){
+    //Este componente posee una pila de screen relacionadas con la cuenta de usuario
+    //Según se desplace el usuario se ejecutará una screen u otra
     return(
         <Stack.Navigator screenOptions={{
             headerStyle: { elevation: 0 },

@@ -20,6 +20,8 @@ export default function Favorites(props){
     const [startCities, setStartCities] = useState(null)
     const [isLoading, setIsLoading] = useState(false)
 
+    //En este componente podremos ver el listado de ciudades, con la posibilidad de acceder a cada una
+
     useEffect(() => {
         firebase.auth().onAuthStateChanged((userInfo) => {
             setUser(userInfo)
@@ -33,24 +35,26 @@ export default function Favorites(props){
                 setTotalCities(snap.size)
             })
 
-            const resultCities = []
+            const resultCities = [] 
 
-            db.collection("cities")
-                .orderBy("createAt", "desc")
-                .limit(limitCities)
+            db.collection("cities")//ingresamos a la tabla cities de nuestra db
+                .orderBy("createAt", "desc") //ordenamos segun criterio
+                .limit(limitCities) //limitamos una cantidad de resultados a obtener
                 .get().then((response) => {
+                    //aqui obtenemos cada ciudad encontrada segun las preferencias arriba mencionadas
                     setStartCities(response.docs[response.docs.length - 1]);
                     response.forEach((doc) => {
                         const city = doc.data();
                         city.id = doc.id
-                        resultCities.push(city)
+                        resultCities.push(city) //la agregamo a nuestro array de ciudades
                     })
-                    setCities(resultCities)
+                    setCities(resultCities) //guardamos la lista completa de ciudades
                 })
         }, [])
     )
     
     const handleLoadMore = () => {
+        //este metodo permite traer mas ciudades, en caso de que las haya
         const resultCities = []
 
         cities.length < totalCities && setIsLoading(true)
@@ -75,6 +79,7 @@ export default function Favorites(props){
                 })
 
                 setCities([...cities, ...resultCities])
+                //las adiciona a nuestro listado, sin eliminar las anteriores
             })
     }
 

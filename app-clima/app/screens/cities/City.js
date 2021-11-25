@@ -30,7 +30,7 @@ export default function City(props) {
         user ? setUserLogged(true) : setUserLogged(false)
     })
 
-    useEffect(() => {
+    useEffect(() => { //trae la ciudad de nuestra db
         db.collection("cities")
             .doc(id)
             .get().then( (response) => {
@@ -59,6 +59,8 @@ export default function City(props) {
         if(!userLogged){
             toastRef.current.show("Debe loguearse antes de agregar una ciudad a favoritos")
         } else {
+            //permite agregar una ciudad a la tabla de favoritos
+            //relaciona usuario con la ciudad
             const payload = {
                 idUser: firebase.auth().currentUser.uid,
                 idCity: city.id
@@ -76,6 +78,7 @@ export default function City(props) {
     }
 
     const removeFavorite = () => {
+        //este metodo permite eliminar una ciudad de favoritos, no la elimina de la lista general
         db.collection("favorites")
             .where("idCity", "==", city.id)
             .where("idUser", "==", firebase.auth().currentUser.uid)
@@ -100,6 +103,7 @@ export default function City(props) {
     
     
     const removeCity = () => {
+        //este metodo eliminar una ciudad de la lista de ciudades
         db.collection("cities")
             .doc(id)
             .get()
@@ -212,9 +216,7 @@ function CityInfo(props){
 
     return (
         <View style={styles.viewCityInfo}>
-            {/* <Text style={styles.cityInfoTitle}>
-                Info sobre city
-            </Text> */}
+
             {map(listInfo, (item, index) => (
                 <ListItem
                     key={index}

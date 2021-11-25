@@ -14,6 +14,7 @@ export default function AccountOptions(props){
     const [renderComponent, setRenderComponent] = useState(null);
 
     const selectedComponent = (key) => {
+        // Este método renderiza el componente de acuerdo a la opción elegida
         switch(key){
             case "displayName":
                 setRenderComponent(
@@ -61,6 +62,7 @@ export default function AccountOptions(props){
 
     return(
         <View>
+            {/* Este componente nos muestra el listado de opciones a traves de una funcion map */}
             {map(menuOptions, (menu, index) => (
                 <ListItem
                     key={index}
@@ -81,7 +83,8 @@ export default function AccountOptions(props){
                     }
                 />
             ))}
-
+            {/* Si renderComponent posee datos, implica que el usuario ya seleccionó una de las opciones,
+            por lo tanto, mostramos el modal correspondiente */}
             {renderComponent && (
                 <Modal
                     isVisible={showModal}
@@ -95,6 +98,8 @@ export default function AccountOptions(props){
 }
 
 function generateOptions(selectedComponent){
+    // Esta función genera las diferentes opciones que posee el usuario para modificar su cuenta
+    // Al presionar alguna de las opciones, invocará al selectedComponent
     return [
         {
             title: "Cambiar nombre y apellido",

@@ -19,6 +19,8 @@ export default function ChangeEmailForm(props){
     }
 
     const onSubmit = () => {
+        /*Este método (luego de validar que se cumplan las condiciones previstas) actualiza en firebase
+        el email de usuario ( debe colocar su contraseña para confirmar) */
         setError({})
         
         if(!formData.email || email === formData.email){
@@ -60,6 +62,7 @@ export default function ChangeEmailForm(props){
     }
 
     return (
+        // Este componente muestra al usuario los campos a completar para gestionar su peticion
         <View style={styles.view}>
             <Input 
                 placeholder="Correo Electronico"
@@ -119,6 +122,6 @@ const styles = StyleSheet.create({
         width: "95%",
     },
     btn: {
-        backgroundColor: "#00a680"
+        backgroundColor: "#FB7508"
     }
 })

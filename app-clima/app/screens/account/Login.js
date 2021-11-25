@@ -9,6 +9,8 @@ import LoginForm from "../../components/account/LoginForm";
 export default function Login(){
     const toastRef = useRef();
 
+    //Este componente muestra el formulario de Login y la opcion de Registro
+
     return(
         <ScrollView >
             <Image

@@ -10,6 +10,8 @@ export default function ChangeDisplayNameForm(props){
     const [isLoading, setIsLoading] = useState(false)
 
     const onSubmit = () => {
+        /*Este método (luego de validar que se cumplan las condiciones previstas) actualiza en firebase
+        el nombre de usuario*/
         setError(null);
         if (!newDisplayName){
             setError("El nombre no puede estar vacío.")
@@ -36,6 +38,7 @@ export default function ChangeDisplayNameForm(props){
     }
 
     return(
+        // Este componente muestra al usuario los campos a completar para gestionar su peticion
         <View style={styles.view}>
             <Input 
                 placeholder="nombre y apellido"
@@ -74,6 +77,6 @@ const styles = StyleSheet.create({
         width: "95%",
     },
     btn: {
-        backgroundColor: "#00a680"
+        backgroundColor: "#FB7508"
     }
 })

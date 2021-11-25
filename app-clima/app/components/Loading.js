@@ -6,6 +6,9 @@ import { Overlay } from "react-native-elements";
 export default function Loading(props){
     const {isVisible, text} = props;
 
+    //Este componente se utiliza para mostrar un cuadro de carga, para indicar al usuario que debe aguardar
+    //Se re-utiliza en la mayor parte de la aplicación
+
     return(
         <Overlay 
             isVisible = {isVisible}
@@ -16,7 +19,7 @@ export default function Loading(props){
             <View style= {styles.view}>
                 <ActivityIndicator 
                     size="large"
-                    coloe="#00a680"
+                    color="#FB7508"
                 />
                 {text && <Text style= {styles.text}> {text} </Text>}
             </View>
@@ -29,7 +32,7 @@ const styles = StyleSheet.create({
         height: 100,
         width: 200,
         backgroundColor: "#fff",
-        borderColor: "#00a680",
+        borderColor: "#FB7508",
         borderWidth: 2,
         borderRadius: 10,
     },
@@ -39,7 +42,7 @@ const styles = StyleSheet.create({
         justifyContent: "center",
     },
     text: {
-        color: "#00a680",
+        color: "#FB7508",
         textTransform: "uppercase",
         marginTop: 10,
     }

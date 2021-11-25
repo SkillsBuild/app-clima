@@ -18,6 +18,7 @@ export default function RegisterForm(props){
     const navigation = useNavigation();
 
     const onSubmit = () => {
+        //Este metodo guarda los datos de usuario recien registrado en firebase
         if(
             isEmpty(formData.email) || 
             isEmpty(formData.password) || 
@@ -31,16 +32,16 @@ export default function RegisterForm(props){
         } else if (size(formData.password) < 6){
             toastRef.current.show("La contraseña debe tener al menos 6 caracteres")
         } else {
-            //setLoading(true);
+
             firebase
                 .auth()
                 .createUserWithEmailAndPassword(formData.email, formData.password)
                 .then( () => {
-                    //setLoading(false);
+
                     navigation.navigate("account");
                 })
                 .catch( () => {
-                    //setLoading(false);
+
                     toastRef.current.show("Ya existe una cuenta registrada con ese email, pruebe con otro")
                 })
         }
@@ -101,7 +102,7 @@ export default function RegisterForm(props){
                 buttonStyle={styles.btnRegister}
                 onPress={ onSubmit }
             />
-            {/* <Loading isVisible={loading} text="Creando cuenta" /> */}
+
         </View>
     )
 }

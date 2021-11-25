@@ -14,12 +14,16 @@ export default function InfoUser(props){
     } = props;
 
     const changeAvatar = async () => {
+        /*Este método permite al usuario cambiar la imagen de su perfil
+        Debe aceptar los permisos para acceder a la galeria del telefono*/
+
         const resultPermissions = await Camera.requestCameraPermissionsAsync();
         const resultPermissionsCamera = resultPermissions.status;
 
         if(resultPermissionsCamera === "denied"){
             toastRef.current.show("Es necesario aceptar los permisos de la galeria")
         } else {
+            //se ajusta la resolución de la imagen
             const result = await ImagePicker.launchImageLibraryAsync({
                 allowsEditing: true,
                 aspect: [4,3]
@@ -40,7 +44,10 @@ export default function InfoUser(props){
     const uploadImage = async (uri) => {
         setLoadingText("Actualizando avatar");
         setLoading(true);
+
+        //como la función es asíncrona, no puede avanzar hacia la siguiente instrucción hasta terminar con esta
         const response = await fetch(uri);
+        
         const blob = await response.blob();
         const ref = firebase.storage().ref().child(`avatar/${uid}`)
 
@@ -48,6 +55,7 @@ export default function InfoUser(props){
     }
 
     const updatePhotoUrl = () => {
+        //se actualiza la imagen en firebase
         firebase
             .storage()
             .ref(`avatar/${uid}`)

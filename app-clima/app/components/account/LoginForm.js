@@ -22,6 +22,7 @@ export default function LoginForm(props){
     }
 
     const onSubmit = () => {
+        //este metodo verifica email y password para luego realizar el login contra firebase
         if(
             isEmpty(formData.email) || 
             isEmpty(formData.password)

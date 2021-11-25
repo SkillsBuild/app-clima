@@ -7,6 +7,8 @@ import Loading from "../../components/Loading";
 
 
 export default function Account(){
+    //Este componente verifica si hay un usuario conectado, en caso afirmativo muestra el componente UserLogged
+    //en caso contrario, mostrara el componente UserGuest
     const [login, setLogin] = useState(null);
 
     useEffect( () => {

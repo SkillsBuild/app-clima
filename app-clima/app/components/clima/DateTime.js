@@ -40,6 +40,7 @@ export default function DateTime({ temperatura, humedad, idIcon }) {
 
   const icon = `http://openweathermap.org/img/wn/${idIcon}@2x.png`;
   
+  /*Este componente organiza y muestra por pantalla el clima de la ciudad seleccionada*/
 
   useEffect(() => {
     setInterval(() => {

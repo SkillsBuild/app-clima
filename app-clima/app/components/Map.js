@@ -5,6 +5,9 @@ import openMap from "react-native-open-maps";
 export default function Map(props) {
     const {location, name, height} = props
 
+    //Este componente permite abrir una venta con el mapa de google
+    //centrara el mismo según la localización recibida por parametros
+
     const openAppMap = () => {
         openMap({
             latitude: location.latitude,

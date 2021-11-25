@@ -15,10 +15,12 @@ const Tab = createBottomTabNavigator();
 
 
 export default function Navigation(){
+    /*Componente principal de navegacion, posee las screen principales de la app, las cuales se podrán navegar
+    a traves de una barra de navegacion colocada en la parte inferior de la app*/
     return (
         <NavigationContainer>
             <Tab.Navigator
-                initialRouteName= "cities"
+                initialRouteName= "account"
                 tabBarOptions= {{
                     inactiveTintColor: "#646464",
                     activeTintColor: "#00a680"

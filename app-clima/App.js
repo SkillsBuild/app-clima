@@ -3,7 +3,8 @@ import { StyleSheet, Text, View, StatusBar, Animated } from 'react-native';
 import { LogBox } from "react-native";
 import { firebase } from "./app/utils/firebase";
 
-import Sun from "./assets/sun.jpg";
+import Cloud from "./assets/img/cloud.png";
+import Sun from "./assets/img/sun.png";
 import Navigation from './app/navigation/Navigation';
 
 
@@ -21,7 +22,7 @@ export default function App() {
       Animated.timing(show, {
         toValue: 1,
         duration: 2500,
-        delay: 2000,
+        delay: 3000,
         useNativeDriver: false,
       }),
       Animated.timing(position, {
@@ -33,7 +34,7 @@ export default function App() {
     ]).start( () => {
 
       Animated.timing(font, {
-        toValue: 200,
+        toValue: 275,
         duration: 1000,
         useNativeDriver: false,
 
@@ -44,23 +45,24 @@ export default function App() {
   if (!animated)
   return (
     <>
-    
       <StatusBar 
-        animated={true} 
-        backgroundColor="#142950" 
-        barStyle="light-content"
+        translucent 
+        backgroundColor="rgba(0,0,0,0.2)"
       />
       <View style={styles.container}>
         <Animated.Image 
-          style={ [styles.image, {top: position}] } 
-          source={Sun} 
+          style={ [styles.imageBackground, {opacity: show, top: font}] } 
+          source={Sun}
         />
+        <Animated.Image
+            style={[styles.image, { top: position }]}
+            source={Cloud}
+          />
         <Animated.Text 
           style={ [styles.text, {opacity: show, transform:[{scale: font}]}] } >
-          Welcome
+          ClimApp
         </Animated.Text>
       </View>
-    
     </>
   );
 
@@ -72,17 +74,27 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#142950',
+    backgroundColor: '#FB7508',
     alignItems: 'center',
     justifyContent: 'space-around',
   },
   image: {
-    width: 100,
-    height: 100,
+    width: 500,
+    height: 500,
     resizeMode: "contain",
+    marginRight: 10,
+  },
+  imageBackground: {
+    width: 150,
+    height: 150,
+    resizeMode: "contain",
+    marginTop: 60,
   },
   text: {
+    fontWeight: "bold",
     fontSize: 50,
-    color: "rgb(242,242,242)",
+    color: "white",
+    fontFamily: "serif",
+    paddingVertical: 100,
   },
 });

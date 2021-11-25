@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
-import { StyleSheet, View, ScrollView, Alert, Dimensions, TextInput } from "react-native"
-import { Icon, Avatar, Input, Image, Button } from "react-native-elements";
+import { StyleSheet, View, ScrollView} from "react-native"
+import { Input, Image, Button } from "react-native-elements";
 import * as Location from 'expo-location';
 import Toast from "react-native-easy-toast";
 import MapView from "react-native-maps";
@@ -17,11 +17,11 @@ export default function AddCitiesForm(props){
     const [cityName, setCityName] = useState("")
     const [cityAddress, setCityAddress] = useState("")
     const [isVisibleMap, setIsVisibleMap] = useState(false);
-    const [locationCity, setLocationCity] = useState(null)
-    const [cityRegion, setCityRegion] = useState("")
+    const [locationCity, setLocationCity] = useState(null);
     
 
     const addCity = () => {
+        //Este metodo permite guardar una ciudad en la base de datos
         if(!cityName && !cityAddress){
             toastRef.current.show("Todos los campos deben ser completados")
         } else if(!locationCity){
@@ -32,7 +32,6 @@ export default function AddCitiesForm(props){
                 .add({
                     name: cityName,
                     address: cityAddress,
-                    //region: cityRegion,
                     location: locationCity,
                     createAt: new Date(),
                     createBy: firebase.auth().currentUser.uid,
@@ -71,7 +70,6 @@ export default function AddCitiesForm(props){
                 toastRef={toastRef}
                 setCityAddress={setCityAddress}
                 setCityName={setCityName}
-                setCityRegion={setCityRegion}
             />
             <Toast ref={toastRef} position="center" opacity={0.9} />
         </ScrollView>
@@ -80,6 +78,7 @@ export default function AddCitiesForm(props){
 }
 
 function FormAdd(props){
+    //Funcion que muestra el formulario para agregar una ciudad
     const {setCityName, setCityAddress, setIsVisibleMap, locationCity, cityName, cityAddress} = props
 
 
@@ -120,9 +119,11 @@ function Map(props){
         toastRef,
         setLocationCity,
         setCityAddress,
-        setCityName,
-        setCityRegion} = props
+        setCityName} = props
     const [location, setLocation] = useState(null)
+
+    /* Esta funcion permite ver la geolocalizacion del usuario, el cual podrá moverse por el mapa
+    y luego guardar la posicion final*/
     
     useEffect(() => {
         (async () => {
@@ -149,10 +150,10 @@ function Map(props){
     }, [])
     
     const confirmLocation = async () => {
+        /*Este metodo guarda los datos de localizacion y region, de acuerdo a la ubicación seleccionada
+         en el mapa, en nuestras variables de estado. Luego en el método "addCity" se envian a la db*/
         const locationReverseGeocode = await Location.reverseGeocodeAsync(location)
         const locationReverse = locationReverseGeocode[0]
-        console.log(locationReverse)
-
 
         if (locationReverse.city){
             setCityName(locationReverse.city)

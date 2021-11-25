@@ -15,7 +15,10 @@ export default function UserLogged(){
     const [reloadUserInfo, setReloadUserInfo] = useState(false);
     const toastRef = useRef();
 
-    useEffect( () => {
+    //un usuario logueado visualizará este componente al ingresar a Account
+    //permite al usuario ver su informacion de cuenta y la posibilidad de cambiar datos en la misma
+
+    useEffect( () => { //si hay cambios en el perfil, se actualizaran automaticamente, sin necesaidad de refrescar
         (async () => {
             const user = await firebase.auth().currentUser;
             setuserInfo(user)
@@ -68,7 +71,7 @@ const styles = StyleSheet.create({
         paddingBottom: 10,
     },
     btnCloseSessionText: {
-        color: "#00a680",
+        color: "#FB7508",
 
     }
 })

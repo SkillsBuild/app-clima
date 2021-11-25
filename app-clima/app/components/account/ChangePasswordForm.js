@@ -18,6 +18,8 @@ export default function ChangePasswordForm(props){
     }
 
     const onSubmit =  async () => {
+        /*Este método (luego de validar que se cumplan las condiciones previstas) actualiza en firebase
+        la contraseña del usuario*/
         let isSetError = true;
         let errorTemp = {}
         setError({});
@@ -150,6 +152,6 @@ const styles = StyleSheet.create({
         width: "95%",
     },
     btn: {
-        backgroundColor: "#00a680"
+        backgroundColor: "#FB7508"
     }
 })

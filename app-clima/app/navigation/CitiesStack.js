@@ -8,6 +8,8 @@ import City from "../screens/cities/City";
 const Stack = createStackNavigator();
 
 export default function FavoritesStack(){
+    //Este componente posee una pila de screen relacionadas con las ciudades
+    //Según se desplace el usuario se ejecutará una screen u otra
     return(
         <Stack.Navigator>
             <Stack.Screen
