@@ -119,9 +119,13 @@ export default function Favorites(props) {
 
 function NotFoundCities() {
   return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <Icon type="material-community" name="alert-outline" size={50} />
-      <Text style={{ fontSize: 20, fontWeight: "bold" }}>
+    <View style={styles.viewImage}>
+      <Image
+        source={require("../../assets/img/alert_cities.png")}
+        resizeMode="contain"
+        style={styles.image}
+      />
+      <Text style={{ fontSize: 20, fontWeight: "bold", textAlign: "center" }}>
         No tienes ciudades favoritas
       </Text>
     </View>
@@ -235,7 +239,6 @@ function City(props) {
 }
 
 const styles = StyleSheet.create({
-  viewLogo: {},
   image: {
     width: "100%",
     height: 250,
@@ -243,16 +246,6 @@ const styles = StyleSheet.create({
   },
   viewImage: {
     marginTop: 50,
-  },
-  logo: {
-    width: "100%",
-    height: 180,
-  },
-
-  viewNoLogged: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
   },
   textNoLogged: {
     fontSize: 20,
