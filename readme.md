@@ -18,7 +18,7 @@
 ### Instalar Yarn
 > 1. Abrir una terminal o consola de comandos
 > 2. Instalar yarn 
-> ```npm install --global yarn```
+ ```npm install --global yarn```
 > * [Documentacion](https://classic.yarnpkg.com/lang/en/docs/install/#windows-stable)
 
 ### Instalar Expo
