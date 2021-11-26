@@ -16,14 +16,14 @@
 ##### npm se obtiene al instalar NodeJs
 
 ### Instalar Yarn
-1. Abrir una terminal o consola de comandos
-2. Instalar yarn 
-> npm install --global yarn
-* [Documentacion](https://classic.yarnpkg.com/lang/en/docs/install/#windows-stable)
+> 1. Abrir una terminal o consola de comandos
+> 2. Instalar yarn 
+> ```npm install --global yarn```
+> * [Documentacion](https://classic.yarnpkg.com/lang/en/docs/install/#windows-stable)
 
 ### Instalar Expo
-1. [Crear cuenta](https://expo.io/)
-2. Instalar Expo en un dispositivo movil
+> 1. [Crear cuenta](https://expo.io/)
+> 2. Instalar Expo en un dispositivo movil
 
 
 
