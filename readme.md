@@ -11,39 +11,39 @@
 
 ## Instalación
 
-1- Instalar [NodeJs](https://nodejs.org/es/download/)
-2- Instalar [Yarn](https://classic.yarnpkg.com/lang/en/docs/install/#windows-stable)
+1. Instalar [NodeJs](https://nodejs.org/es/download/)
+2. Instalar [Yarn](https://classic.yarnpkg.com/lang/en/docs/install/#windows-stable)
 ```
 $ npm install --global yarn
 ```
-3- Instalar Dependencias
+3. Instalar Dependencias
 
 ```sh
 cd climapp
 yarn install
 ```
 
-4- Crear Cuenta en [Expo.io](https://expo.io/)
-5- Instalar Expo en un dispositivo movil
+4. Crear Cuenta en [Expo.io](https://expo.io/)
+5. Instalar Expo en un dispositivo movil
 
 
 ***
 
 ## EJECUCIÓN
 
-1- Ejecutar el servidor
+1. Ejecutar el servidor
 ```sh
 cd climapp
 yarn start
 ```
 #### Presionar la tecla [D] para mostrar las herramientas de desarrollo
 
-2- Publicar el proyecto en expo
+2. Publicar el proyecto en expo
 ```sh
 Publish or republish project
 ```
 
-3- Leer el codigo QR con el movil
+3. Leer el codigo QR con el movil
 
 
 ***
