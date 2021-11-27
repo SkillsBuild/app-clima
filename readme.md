@@ -1,4 +1,4 @@
-# **ClimApp**
+# <p align="center"> **ClimApp** </p>
 ![ClimaApp](./app-clima/assets/img/sun.png)
 
 - [Instalación](#Instalación)
