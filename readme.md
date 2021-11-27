@@ -1,5 +1,5 @@
 
-![ClimaApp](./app-clima/assets/img/login-logo.png)
+![ClimaApp](./app-clima/assets/img/login_logo.png)
 
 - [Instalación](#Instalación)
 - [Ejecución](#Ejecución)
