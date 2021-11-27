@@ -5,6 +5,8 @@
 - [Ejecución](#Ejecución)
 - [Documentación](#Documentación)
 - [Dependencias](#Dependencias)
+- [Prototipo](#Prototipo)
+- [Persona Canvas](#Persona-Canvas)
 
 ***
 ***
@@ -69,3 +71,10 @@ Publish or republish project
 | [FireSql](https://www.npmjs.com/package/firesql) |  2.0.2 |
 | [React](https://es.reactjs.org/docs/getting-started.html) |  16.13.1 |
 | [React Google Maps](https://www.npmjs.com/package/react-google-maps) | 9.4.35 |
+
+
+## Prototipo
+[ClimAppProto.io](https://pr.to/PILU9V/)
+
+## Persona Canvas
+![ClimaApp](./user-persona.png)
