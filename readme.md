@@ -1,5 +1,5 @@
 # <p align="center"> **ClimApp** </p>
-! <p align="center">[ClimaApp](./app-clima/assets/img/sun.png) </p>
+<p align="center"> ![ClimaApp](./app-clima/assets/img/sun.png) </p>
 
 - [Instalación](#Instalación)
 - [Ejecución](#Ejecución)
@@ -60,8 +60,8 @@ Publish or republish project
 ***
 
 ## Dependencias
-
-| <p align="center"> Dependencia | Version |
+<p align="center">
+| Dependencia | Version |
 | ------ | ------ |
 | [React Navigation](https://reactnavigation.org/docs/getting-started/) |  5.4.0 |
 | [Expo](https://docs.expo.dev/get-started/installation/) |  42.0.1 |
