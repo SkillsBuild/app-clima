@@ -1,5 +1,5 @@
 # <p align="center"> **ClimApp** </p>
-![ClimaApp](./app-clima/assets/img/sun.png)
+! <p align="center">[ClimaApp](./app-clima/assets/img/sun.png) </p>
 
 - [Instalación](#Instalación)
 - [Ejecución](#Ejecución)
@@ -9,7 +9,7 @@
 ***
 ***
 
-## Instalación
+## <p marginLeft=20> Instalación </p>
 
 1. Instalar [NodeJs](https://nodejs.org/es/download/)
 2. Instalar [Yarn](https://classic.yarnpkg.com/lang/en/docs/install/#windows-stable)
@@ -29,14 +29,14 @@ yarn install
 
 ***
 
-## EJECUCIÓN
+## Ejecución
 
 1. Ejecutar el servidor
 ```sh
 cd climapp
 yarn start
 ```
-#### Presionar la tecla [D] para mostrar las herramientas de desarrollo
+_Presionar la tecla [D] para mostrar las herramientas de desarrollo_
 
 2. Publicar el proyecto en expo
 ```sh
@@ -60,7 +60,8 @@ Publish or republish project
 ***
 
 ## Dependencias
-| Dependencia | Version |
+
+| <p align="center"> Dependencia | Version |
 | ------ | ------ |
 | [React Navigation](https://reactnavigation.org/docs/getting-started/) |  5.4.0 |
 | [Expo](https://docs.expo.dev/get-started/installation/) |  42.0.1 |
@@ -68,3 +69,4 @@ Publish or republish project
 | [FireSql](https://www.npmjs.com/package/firesql) |  2.0.2 |
 | [React](https://es.reactjs.org/docs/getting-started.html) |  16.13.1 |
 | [React Google Maps](https://www.npmjs.com/package/react-google-maps) | 9.4.35 |
+</p>
