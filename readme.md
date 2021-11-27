@@ -76,5 +76,7 @@ Publish or republish project
 ## Prototipo
 [ClimAppProto.io](https://pr.to/PILU9V/)
 
+***
+
 ## Persona Canvas
 ![ClimaApp](./user-persona.png)
