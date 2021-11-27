@@ -1,5 +1,5 @@
 # <p align="center"> **ClimApp** </p>
-<p align="center"> ![ClimaApp](./app-clima/assets/img/sun.png) </p>
+![ClimaApp](./app-clima/assets/img/sun.png)
 
 - [Instalación](#Instalación)
 - [Ejecución](#Ejecución)
@@ -60,7 +60,7 @@ Publish or republish project
 ***
 
 ## Dependencias
-<p align="center">
+
 | Dependencia | Version |
 | ------ | ------ |
 | [React Navigation](https://reactnavigation.org/docs/getting-started/) |  5.4.0 |
@@ -69,4 +69,3 @@ Publish or republish project
 | [FireSql](https://www.npmjs.com/package/firesql) |  2.0.2 |
 | [React](https://es.reactjs.org/docs/getting-started.html) |  16.13.1 |
 | [React Google Maps](https://www.npmjs.com/package/react-google-maps) | 9.4.35 |
-</p>
