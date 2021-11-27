@@ -96,7 +96,7 @@ function FormAdd(props) {
   return (
     <View style={styles.viewForm}>
       <Image
-        source={require("../../../assets/img/login_logo.png")}
+        source={require("../../../assets/img/anadecity_screen.png")}
         resizeMode="contain"
         style={styles.logo}
       />
@@ -198,7 +198,7 @@ function Map(props) {
 const styles = StyleSheet.create({
   logo: {
     width: "100%",
-    height: 150,
+    height: 200,
     marginTop: 25,
     marginVertical: 20,
   },
