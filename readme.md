@@ -9,7 +9,7 @@
 ***
 ***
 
-## <p marginLeft=20> Instalación </p>
+## Instalación
 
 1. Instalar [NodeJs](https://nodejs.org/es/download/)
 2. Instalar [Yarn](https://classic.yarnpkg.com/lang/en/docs/install/#windows-stable)
@@ -62,7 +62,7 @@ Publish or republish project
 ## Dependencias
 
 | Dependencia | Version |
-| ------ | ------ |
+| ------ | ------: |
 | [React Navigation](https://reactnavigation.org/docs/getting-started/) |  5.4.0 |
 | [Expo](https://docs.expo.dev/get-started/installation/) |  42.0.1 |
 | [Firebase](https://www.npmjs.com/package/firebase) | 8.2.3 |
