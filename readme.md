@@ -1,5 +1,5 @@
-
-![ClimaApp](./app-clima/assets/sun.jpg)
+# <p align="center"> **ClimApp** </p>
+![ClimaApp](./app-clima/assets/img/sun.png)
 
 - [Instalación](#Instalación)
 - [Ejecución](#Ejecución)
